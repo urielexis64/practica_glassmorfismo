@@ -1,0 +1,229 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url(variables.css);
+@import url(animations.css);
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+}
+
+/* ============================== CLASSES =============================== */
+.paco-sad {
+	filter: grayscale(1);
+}
+
+.acceptgradient {
+	background: var(--accept-gradient);
+}
+
+.rejectgradient {
+	background: var(--reject-gradient);
+}
+
+.btn-accept {
+	background-color: var(--accept-color);
+}
+
+.btn-reject {
+	background-color: var(--reject-color);
+}
+
+.btn-submit {
+	background-color: var(--submit-color);
+	width: 50%;
+}
+
+.visible {
+	height: 200px;
+	opacity: 1;
+}
+
+.opaque {
+	opacity: 1 !important;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.bounceToast {
+	animation: fadeInOutUp 4s var(--bounce-timing-function);
+}
+
+.fadeInOut {
+	animation: fadeInOut 4s var(--bounce-timing-function);
+}
+
+/* ============================== BODY =============================== */
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background: linear-gradient(45deg, #4591a8, #2fa1df, #28a2e4, #6686d6);
+	background-size: 400% 400%;
+	animation: bg-anim 8s ease infinite;
+}
+
+body::before {
+	content: "";
+	position: absolute;
+	top: 10%;
+	left: calc(50vw - 400px);
+	width: 250px;
+	height: 250px;
+	z-index: -1;
+	border-radius: 50%;
+	filter: blur(2px);
+	background-color: transparent;
+	box-shadow: 12px 12px 12px var(--alpha-black), inset 20px 0px 48px var(--alpha-black);
+	animation: fadeInRight 4s ease, upNDown 2s ease-in-out alternate infinite forwards;
+}
+
+body::after {
+	content: "";
+	position: absolute;
+	bottom: 12%;
+	right: calc(50vw - 350px);
+	z-index: 2;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	filter: blur(2px);
+	background-color: transparent;
+	box-shadow: 8px -8px 8px var(--alpha-black), inset -10px -20px 18px var(--alpha-black);
+	animation: fadeInLeft 5s ease, upNDown 2s 2s ease-in-out alternate infinite forwards;
+}
+
+/* ============================== FORM =============================== */
+
+.btn {
+	border: none;
+	padding: 10px 16px;
+	border-radius: 8px;
+	outline: none;
+	color: white;
+	font-weight: 700;
+	margin: 8px;
+	cursor: pointer;
+	transition: 0.2s ease;
+}
+
+.btn:hover {
+	box-shadow: 0 4px 6px var(--alpha-black);
+	transform: translateY(-4px);
+}
+
+.btn:disabled {
+	background-color: #49494981;
+	box-shadow: inset 2px 2px 16px var(--alpha-black);
+	pointer-events: none;
+}
+
+.card {
+	width: 23%;
+	padding: 32px 16px;
+	border-radius: 32px;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	box-shadow: 0 0 12px var(--alpha-black), inset 2px 2px 8px rgba(255, 255, 255, 0.05);
+	backdrop-filter: blur(8px);
+	position: relative;
+	background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1));
+	animation: fadeInUp 3s ease;
+}
+
+.card > img {
+	position: absolute;
+	width: 30%;
+	right: -10%;
+	top: -10%;
+	filter: drop-shadow(0 16px 8px var(--alpha-black));
+	transform-origin: top;
+	animation: pendulum 3s var(--bounce-timing-function) alternate infinite;
+}
+
+.card #paco {
+	width: 30%;
+	border-radius: 50%;
+	border: 2px solid white;
+	box-shadow: 0 8px 8px var(--alpha-black), 0 -0 32px 16px var(--alpha-black);
+	transition: 1s ease;
+}
+
+.paco-container {
+	position: relative;
+	display: inline;
+}
+
+.paco-container #emotion {
+	position: absolute;
+	width: 100%;
+	top: -450%;
+	left: 0;
+	opacity: 0;
+	transition: 1s ease;
+}
+
+.card p {
+	font-size: 24px;
+	color: white;
+	margin: 0 auto;
+	text-shadow: 0 0 4px var(--alpha-black);
+}
+
+textarea {
+	height: 0;
+	width: 100%;
+	max-width: 400px;
+	max-height: 300px;
+	border: none;
+	border-radius: 16px;
+	outline: none;
+	padding: 12px;
+	resize: none;
+	opacity: 0;
+	transition: 0.7s var(--bounce-timing-function);
+	cursor: auto;
+}
+
+textarea::placeholder {
+	text-align: center;
+}
+
+textarea::-webkit-scrollbar {
+	border-radius: 12px;
+	width: 12px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+	border-radius: 12px;
+	background-color: var(--alpha-black);
+}
+
+/* ==================================== TOAST MESSAGE ==================================== */
+
+#toast-container {
+	position: absolute;
+	z-index: 9999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	pointer-events: none;
+	background-color: var(--alpha-black);
+	backdrop-filter: blur(2px);
+}
+
+#toast {
+	padding: 8px 48px;
+	border-radius: 32px;
+	opacity: 0;
+	color: white;
+	font-weight: bold;
+	box-shadow: 0 8px 8px var(--alpha-black);
+	background-color: rgba(50, 50, 50, 0.9);
+}

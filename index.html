@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Aceptar/Rechazar</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div id="toast-container">
+			<div id="toast">¡Decisión enviada!</div>
+		</div>
+		<div class="card text-center">
+			<img src="assets/vacations.png" alt="vacations-icon" />
+			<div>
+				<div class="paco-container">
+					<img id="paco" src="assets/paco.png" alt="paco-profile-img" />
+					<img id="emotion" alt="emotion" />
+				</div>
+				<p>
+					El señor Paco le esta pidiendo vacaciones.<br /><strong
+						>¿Cuál es su decisión?</strong
+					>
+				</p>
+			</div>
+			<form onsubmit="callAPI(event, reason.value);">
+				<div>
+					<button id="accept-btn" class="btn btn-accept">
+						ACEPTAR <i class="fa fa-check"></i>
+					</button>
+					<button id="reject-btn" class="btn btn-reject">
+						RECHAZAR <i class="fa fa-times"></i>
+					</button>
+				</div>
+				<textarea
+					placeholder="Razón, motivo o circunstancia del porqué no le brindará vacaciones al pobre Paco. 😢"
+					name="reason"
+					id="rejectarea"
+				></textarea>
+				<button disabled type="submit" id="submit-btn" class="btn btn-submit">
+					ENVIAR <i class="fa fa-paper-plane"></i>
+				</button>
+			</form>
+		</div>
+		<script src="https://kit.fontawesome.com/12aa55278e.js" crossorigin="anonymous"></script>
+		<script src="index.js"></script>
+	</body>
+</html>

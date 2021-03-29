@@ -1,0 +1,10 @@
+:root {
+	--alpha-white: rgba(255, 255, 255, 0.1);
+	--alpha-black: rgba(0, 0, 0, 0.2);
+	--accept-color: #79e963;
+	--reject-color: #ec2131;
+	--submit-color: #2191ec;
+	--accept-gradient: linear-gradient(45deg, #45a87a, #51d37c, #24d172, #89c467);
+	--reject-gradient: linear-gradient(45deg, #a84556, #d3515c, #dd3467, #c46767);
+	--bounce-timing-function: cubic-bezier(0.85, -0.6, 0.14, 1.51);
+}
