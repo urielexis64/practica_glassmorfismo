@@ -2,4 +2,4 @@
 
 ## Demo
 
-<img src="https://github.com/urielexis64/practica_glassmorfismo/tree/main/assets/demo.gif" width="100%" />
+<img src="https://github.com/urielexis64/practica_glassmorfismo/blob/main/assets/demo.gif" width="100%" />
